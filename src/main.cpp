@@ -103,69 +103,6 @@ int main() {
   // set up vertex data (and buffer(s)) and configure vertex attributes
   // ------------------------------------------------------------------
 
-  /*float floor = -1.0f;
-  float ceiling = 9.0f;
-  float leftwall = -5.0f;
-  float rightwall = 5.0f;
-  float backwall = -5.0f;
-  float frontwall = 5.0f;
-  
-
-  float points[] = {
-	  leftwall, floor, backwall, 0.0f, 0.0f, rightwall, floor, backwall, 1.0f, 0.0f,
-	  rightwall, ceiling, backwall, 1.0f, 1.0f, rightwall, ceiling, backwall, 1.0f, 1.0f,  //back wall
-	  leftwall, ceiling, backwall, 0.0f, 1.0f, leftwall, floor, backwall, 0.0f, 0.0f,
-
-	  leftwall, floor, frontwall, 0.0f, 0.0f, rightwall, floor, frontwall, 1.0f, 0.0f,
-	  rightwall, ceiling, frontwall, 1.0f, 1.0f, rightwall, ceiling, frontwall, 1.0f, 1.0f,  //front wall
-	  leftwall, ceiling, frontwall, 0.0f, 1.0f, leftwall, floor, frontwall, 0.0f, 0.0f,
-
-	  leftwall, ceiling, frontwall, 0.0f, 0.0f, leftwall, ceiling, backwall, 1.0f, 0.0f,
-	  leftwall, floor, backwall, 1.0f, 1.0f, leftwall, floor, backwall, 1.0f, 1.0f,  //left wall
-	  leftwall, floor, frontwall, 0.0f, 1.0f, leftwall, ceiling, frontwall, 0.0f, 0.0f,
-
-	  rightwall, ceiling, frontwall, 0.0f, 0.0f, rightwall, ceiling, backwall, 1.0f, 0.0f,
-	  rightwall, floor, backwall, 1.0f, 1.0f, rightwall, floor, backwall, 1.0f, 1.0f,  //right wall
-	  rightwall, floor, frontwall, 0.0f, 1.0f, rightwall, ceiling, frontwall, 0.0f, 0.0f,
-
-	  leftwall, ceiling, backwall, 0.0f, 0.0f, rightwall, ceiling, backwall, 1.0f, 0.0f,
-	  rightwall, ceiling, frontwall, 1.0f, 1.0f, rightwall, ceiling, frontwall, 1.0f, 1.0f,  //top wall
-	  leftwall, ceiling, frontwall, 0.0f, 1.0f, leftwall, ceiling, backwall, 0.0f, 0.0f,
-
-	  leftwall, floor, backwall, 0.0f, 0.0f, rightwall, floor, backwall, 1.0f, 0.0f,
-	  rightwall, floor, frontwall, 1.0f, 1.0f, rightwall, floor, frontwall, 1.0f, 1.0f,  //bottom wall
-	  leftwall, floor, frontwall, 0.0f, 1.0f, leftwall, floor, backwall, 0.0f, 0.0f
-
-  };
-
-  float vertices[] = {
-	  //point              //texture   //point              //texture
-      -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.5f,  -0.5f, -0.5f, 1.0f, 0.0f,
-      0.5f,  0.5f,  -0.5f, 1.0f, 1.0f, 0.5f,  0.5f,  -0.5f, 1.0f, 1.0f,  // back face
-      -0.5f, 0.5f,  -0.5f, 0.0f, 1.0f, -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
-
-      -0.5f, -0.5f, 0.5f,  0.0f, 0.0f, 0.5f,  -0.5f, 0.5f,  1.0f, 0.0f,
-      0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,  // front face
-      -0.5f, 0.5f,  0.5f,  0.0f, 1.0f, -0.5f, -0.5f, 0.5f,  0.0f, 0.0f,
-
-      -0.5f, 0.5f,  0.5f,  1.0f, 0.0f, -0.5f, 0.5f,  -0.5f, 1.0f, 1.0f,
-      -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,  // left face
-      -0.5f, -0.5f, 0.5f,  0.0f, 0.0f, -0.5f, 0.5f,  0.5f,  1.0f, 0.0f,
-
-      0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.5f,  0.5f,  -0.5f, 1.0f, 1.0f,
-      0.5f,  -0.5f, -0.5f, 0.0f, 1.0f, 0.5f,  -0.5f, -0.5f, 0.0f, 1.0f,  // right face
-      0.5f,  -0.5f, 0.5f,  0.0f, 0.0f, 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-      -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.5f,  -0.5f, -0.5f, 1.0f, 1.0f,
-      0.5f,  -0.5f, 0.5f,  1.0f, 0.0f, 0.5f,  -0.5f, 0.5f,  1.0f, 0.0f,  // top face
-      -0.5f, -0.5f, 0.5f,  0.0f, 0.0f, -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-
-      -0.5f, 0.5f,  -0.5f, 0.0f, 1.0f, 0.5f,  0.5f,  -0.5f, 1.0f, 1.0f,
-      0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  // bottom face
-      -0.5f, 0.5f,  0.5f,  0.0f, 0.0f, -0.5f, 0.5f,  -0.5f, 0.0f, 1.0f};*/
-
-  
-
 
   float skyboxVertices[] = {
 	  // positions          
@@ -279,7 +216,7 @@ int main() {
 	  glm::vec3(0.5f, 3.8f, -115.0f),
 	  glm::vec3(1.1f, 3.8f, -115.0f),
 	  glm::vec3(0.7f, 3.6f, -115.0f),
-	  glm::vec3(0.9f, 3.6f, -115.0f), //J
+	  glm::vec3(0.9f, 3.6f, -115.0f), // J
 	  glm::vec3(1.7f, 4.6f, -115.0f),
 	  glm::vec3(1.9f, 4.6f, -115.0f),
 	  glm::vec3(1.5f, 4.4f, -115.0f),
