@@ -17,6 +17,7 @@ const float PITCH = 0.0f;
 const float SPEED = 2.5f;
 const float SENSITIVITY = 0.1f;
 const float ZOOM = 45.0f;
+const float PitchConstraint = 89.0f;
 
 // An abstract camera class that processes input and calculates the
 // corresponding Euler Angles, Vectors and Matrices for use in OpenGL
@@ -31,10 +32,28 @@ public:
   // Euler Angles
   float Yaw;
   float Pitch;
+  float Roll;
   // Camera options
   float MovementSpeed;
   float MouseSensitivity;
   float Zoom;
+
+  float Floor = 0.0f;
+  float Ceiling = 8.0f;
+  float GRAVITY = 9.8f;
+  float accelerationUP = 0.0f;
+  float accelerationDOWN = 0.0f;
+  float UPSPEED = 0.0f;
+  float DOWNSPEED = 8.0f;
+
+  bool direction[6] = { false };
+
+  bool Reverse = false;
+
+  bool Fall = false;
+  bool inAir = false;
+
+  glm::vec3 velocity;
 
   // Constructor with vectors
   Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f),
@@ -50,8 +69,13 @@ public:
   // Processes input received from any keyboard-like input system. Accepts input
   // parameter in the form of camera defined ENUM (to abstract it from windowing
   // systems)
-  void ProcessKeyboard(Camera_Movement direction, float deltaTime);
-
+  void Init();
+  void ProcessKeyboard(int key, int action);
+  void Update(float deltaTime);
+  void CheckPosition();
+  void CheckFall(std::vector<glm::vec3> holes, int botsize, int topsize, int botsizecheck, int topsizecheck);
+  bool onBlock(std::vector<glm::vec3> holes, int botsize, int topsize, int botsizecheck, int topsizecheck);
+  void CheckCollision(std::vector<glm::vec3> holes, int botsize, int topsize, int botsizecheck, int topsizecheck);
   // Processes input received from a mouse input system. Expects the offset
   // value in both the x and y direction.
   void ProcessMouseMovement(float xoffset, float yoffset,
