@@ -1,6 +1,6 @@
 # OpenGLProject
 
-A platformer in which you can reverse gravity. You cannot reverse gravity while in mid-air. Falling off will reset you to the start or the furthest reached checkpoint marked by the line of greenbloocks. Once you reach the end there is a congratulations message.
+A platformer in which you can reverse gravity. You cannot reverse gravity while in mid-air. Falling off will reset you to the start or the furthest reached checkpoint marked by the line of greenblocks. Once you reach the end there is a congratulations message.
 
 ## Gameplay
   
