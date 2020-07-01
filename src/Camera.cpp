@@ -118,8 +118,12 @@ void Camera::CheckPosition() {
 	if (velocity.y < -10.0f)
 	{
 		
+		if (Position.z <= -100.0f) {
 
-		if (Position.z <= -80.0f) {
+			Position.z = -100.0f;
+
+		}
+		else if (Position.z <= -80.0f) {
 
 			Position.z = -80.0f;
 
